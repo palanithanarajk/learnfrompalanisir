@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Analysis and Machine Learning Using R: Biomedial Data</title>
+  <meta name="description" content="Data Analysis and Machine Learning Using R: Biomedial Data">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Analysis and Machine Learning Using R: Biomedial Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Analysis and Machine Learning Using R: Biomedial Data" />
+  
+  
+  
+
+<meta name="author" content="Palani Thanaraj K">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-visualization.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="prerequisite.html"><a href="prerequisite.html"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#dataset"><i class="fa fa-check"></i><b>1.1</b> Dataset</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#data-exploration"><i class="fa fa-check"></i><b>1.2</b> Data Exploration</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#descriptive-statistics"><i class="fa fa-check"></i><b>1.3</b> Descriptive statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-visualization.html"><a href="data-visualization.html#relation-of-diabetes-and-pregnancies"><i class="fa fa-check"></i><b>2.1</b> Relation of diabetes and pregnancies</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-visualization.html"><a href="data-visualization.html#scatter-plot"><i class="fa fa-check"></i><b>2.1.1</b> Scatter plot</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-visualization.html"><a href="data-visualization.html#boxplot"><i class="fa fa-check"></i><b>2.1.2</b> Boxplot</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-visualization.html"><a href="data-visualization.html#density-plot"><i class="fa fa-check"></i><b>2.1.3</b> Density Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-visualization.html"><a href="data-visualization.html#relation-between-glucose-blood-pressure-age-pregnancy"><i class="fa fa-check"></i><b>2.2</b> Relation between Glucose, Blood Pressure, Age, Pregnancy</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-visualization.html"><a href="data-visualization.html#scatter-plot-1"><i class="fa fa-check"></i><b>2.2.1</b> Scatter Plot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="statistical-learning.html"><a href="statistical-learning.html"><i class="fa fa-check"></i><b>3</b> Statistical Learning</a><ul>
+<li class="chapter" data-level="3.1" data-path="statistical-learning.html"><a href="statistical-learning.html#data-preprocessing"><i class="fa fa-check"></i><b>3.1</b> Data Preprocessing</a></li>
+<li class="chapter" data-level="3.2" data-path="statistical-learning.html"><a href="statistical-learning.html#normalization-of-features"><i class="fa fa-check"></i><b>3.2</b> Normalization of features</a></li>
+<li class="chapter" data-level="3.3" data-path="statistical-learning.html"><a href="statistical-learning.html#options-for-training-process"><i class="fa fa-check"></i><b>3.3</b> Options for training process</a></li>
+<li class="chapter" data-level="3.4" data-path="statistical-learning.html"><a href="statistical-learning.html#classical-ml-models"><i class="fa fa-check"></i><b>3.4</b> Classical ML Models</a></li>
+<li class="chapter" data-level="3.5" data-path="statistical-learning.html"><a href="statistical-learning.html#testing-the-performance-for-the-test-data-set."><i class="fa fa-check"></i><b>3.5</b> Testing the performance for the test data set.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis and Machine Learning Using R: Biomedial Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="statistical-learning" class="section level1">
+<h1><span class="header-section-number">3</span> Statistical Learning</h1>
+<p>Statistical Learning is also known as Machine learning(ML) in general. Here we try to develop ML methods to model/predict the occurrence of diabetic outcome.</p>
+<div id="data-preprocessing" class="section level2">
+<h2><span class="header-section-number">3.1</span> Data Preprocessing</h2>
+<p>The data consists of different features that are needed to be mapped to a common reference frame. This is done by data preprocessing step.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caret) <span class="co"># ML package for various methods</span>
+
+<span class="co"># Create the training and test datasets</span>
+<span class="kw">set.seed</span>(<span class="dv">100</span>)
+hci&lt;-diab
+
+<span class="co"># Step 1: Get row numbers for the training data</span>
+trainRowNumbers &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(hci<span class="op">$</span>Outcome, <span class="dt">p=</span><span class="fl">0.8</span>, <span class="dt">list=</span><span class="ot">FALSE</span>) <span class="co"># Data partition for dividing the dataset into training and testing data set. This is useful for cross validation</span>
+
+<span class="co"># Step 2: Create the training  dataset</span>
+trainData &lt;-<span class="st"> </span>hci[trainRowNumbers,]
+
+<span class="co"># Step 3: Create the test dataset</span>
+testData &lt;-<span class="st"> </span>hci[<span class="op">-</span>trainRowNumbers,]
+
+<span class="co"># Store X and Y for later use.</span>
+x =<span class="st"> </span>trainData[, <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]
+y=trainData<span class="op">$</span>Outcome
+
+xt=<span class="st"> </span>testData[, <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]
+yt=testData<span class="op">$</span>Outcome
+<span class="co"># # See the structure of the new dataset</span></code></pre></div>
+</div>
+<div id="normalization-of-features" class="section level2">
+<h2><span class="header-section-number">3.2</span> Normalization of features</h2>
+<p>The features are normalized to a range of [0,1] using <code>preproces</code> command and using <code>range</code> method</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">preProcess_range_modeltr &lt;-<span class="st"> </span><span class="kw">preProcess</span>(trainData, <span class="dt">method=</span><span class="st">&#39;range&#39;</span>)
+preProcess_range_modelts &lt;-<span class="st"> </span><span class="kw">preProcess</span>(testData, <span class="dt">method=</span><span class="st">&#39;range&#39;</span>)
+
+trainData &lt;-<span class="st"> </span><span class="kw">predict</span>(preProcess_range_modeltr, <span class="dt">newdata =</span> trainData)
+testData &lt;-<span class="st"> </span><span class="kw">predict</span>(preProcess_range_modelts, <span class="dt">newdata =</span> testData)
+
+<span class="co"># Append the Y variable</span>
+trainData<span class="op">$</span>Outcome &lt;-<span class="st"> </span>y
+testData<span class="op">$</span>Outcome&lt;-yt
+<span class="kw">levels</span>(trainData<span class="op">$</span>Outcome) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Class0&quot;</span>, <span class="st">&quot;Class1&quot;</span>) <span class="co"># Convert binary outcome into character for caret package</span>
+<span class="kw">levels</span>(testData<span class="op">$</span>Outcome) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Class0&quot;</span>, <span class="st">&quot;Class1&quot;</span>)
+
+<span class="co">#apply(trainData[, 1:8], 2, FUN=function(x){c(&#39;min&#39;=min(x), &#39;max&#39;=max(x))})</span>
+<span class="co">#str(trainData)</span></code></pre></div>
+</div>
+<div id="options-for-training-process" class="section level2">
+<h2><span class="header-section-number">3.3</span> Options for training process</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#fit control</span>
+fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(
+  <span class="dt">method =</span> <span class="st">&#39;cv&#39;</span>,                   <span class="co"># k-fold cross validation</span>
+  <span class="dt">number =</span> <span class="dv">5</span>,                      <span class="co"># number of folds</span>
+  <span class="dt">savePredictions =</span> <span class="st">&#39;final&#39;</span>,       <span class="co"># saves predictions for optimal tuning parameter</span>
+  <span class="dt">classProbs =</span> T,                  <span class="co"># should class probabilities be returned</span>
+  <span class="dt">summaryFunction=</span>twoClassSummary  <span class="co"># results summary function</span>
+) </code></pre></div>
+</div>
+<div id="classical-ml-models" class="section level2">
+<h2><span class="header-section-number">3.4</span> Classical ML Models</h2>
+<p>The ML models we have chosen are: LDA, KNN, SVM, RandomForest, Adaboost. The <code>Caret</code> package provides a uniform program interface for all the machine models defined in the library.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 1: Tune hyper parameters by setting tuneLength</span>
+<span class="kw">set.seed</span>(<span class="dv">100</span>)
+model1 =<span class="st"> </span><span class="kw">train</span>(Outcome <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>trainData, <span class="dt">method=</span><span class="st">&#39;lda&#39;</span>, <span class="dt">tuneLength =</span> <span class="dv">5</span>, <span class="dt">metric=</span><span class="st">&#39;ROC&#39;</span>, <span class="dt">trControl =</span> fitControl)
+
+model2 =<span class="st"> </span><span class="kw">train</span>(Outcome <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>trainData, <span class="dt">method=</span><span class="st">&#39;knn&#39;</span>, <span class="dt">tuneLength=</span><span class="dv">2</span>, <span class="dt">trControl =</span> fitControl)<span class="co">#KNN Model</span>
+model3 =<span class="st"> </span><span class="kw">train</span>(Outcome <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>trainData, <span class="dt">method=</span><span class="st">&#39;svmRadial&#39;</span>, <span class="dt">tuneLength=</span><span class="dv">2</span>, <span class="dt">trControl =</span> fitControl)<span class="co">#SVM</span>
+model4 =<span class="st"> </span><span class="kw">train</span>(Outcome <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>trainData, <span class="dt">method=</span><span class="st">&#39;rpart&#39;</span>, <span class="dt">tuneLength=</span><span class="dv">2</span>, <span class="dt">trControl =</span> fitControl)<span class="co">#RandomForest</span>
+model5 =<span class="st"> </span><span class="kw">train</span>(Outcome <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>trainData, <span class="dt">method=</span><span class="st">&#39;adaboost&#39;</span>, <span class="dt">tuneLength=</span><span class="dv">2</span>, <span class="dt">trControl =</span> fitControl) <span class="co"># Adaboost</span>
+
+<span class="co"># Compare model performances using resample()</span>
+models_compare &lt;-<span class="st"> </span><span class="kw">resamples</span>(<span class="kw">list</span>(<span class="dt">LDA=</span>model1,<span class="dt">KNN=</span>model2,<span class="dt">SVM=</span>model3,<span class="dt">RF=</span>model4, <span class="dt">ADA=</span>model5))
+
+<span class="co"># Summary of the models performances</span>
+<span class="kw">summary</span>(models_compare)</code></pre></div>
+<pre><code>## 
+## Call:
+## summary.resamples(object = models_compare)
+## 
+## Models: LDA, KNN, SVM, RF, ADA 
+## Number of resamples: 5 
+## 
+## ROC 
+##          Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA&#39;s
+## LDA 0.8084302 0.8095930 0.8186047 0.8225000 0.8290698 0.8468023    0
+## KNN 0.7332849 0.7409884 0.7819767 0.7731395 0.7904070 0.8190407    0
+## SVM 0.7781977 0.8191860 0.8287791 0.8241860 0.8348837 0.8598837    0
+## RF  0.6415698 0.6619186 0.7068314 0.7105233 0.7531977 0.7890988    0
+## ADA 0.7741279 0.7752907 0.7796512 0.7942442 0.8098837 0.8322674    0
+## 
+## Sens 
+##       Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## LDA 0.8375  0.8625 0.8750 0.8725  0.8875 0.9000    0
+## KNN 0.7750  0.7875 0.8375 0.8325  0.8625 0.9000    0
+## SVM 0.8000  0.8375 0.8500 0.8550  0.8875 0.9000    0
+## RF  0.7250  0.7625 0.7875 0.8100  0.8500 0.9250    0
+## ADA 0.7250  0.7875 0.8125 0.8075  0.8500 0.8625    0
+## 
+## Spec 
+##          Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA&#39;s
+## LDA 0.4651163 0.5348837 0.5813953 0.5534884 0.5813953 0.6046512    0
+## KNN 0.3488372 0.4883721 0.4883721 0.4837209 0.5348837 0.5581395    0
+## SVM 0.4651163 0.5116279 0.5116279 0.5488372 0.5813953 0.6744186    0
+## RF  0.4186047 0.5581395 0.5813953 0.6000000 0.6511628 0.7906977    0
+## ADA 0.5581395 0.5813953 0.6279070 0.6139535 0.6279070 0.6744186    0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Draw box plots to compare models</span>
+scales &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x=</span><span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>), <span class="dt">y=</span><span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>))
+<span class="kw">bwplot</span>(models_compare, <span class="dt">scales=</span>scales)</code></pre></div>
+<p><img src="_main_files/figure-html/ml1-1.png" width="672" /></p>
+</div>
+<div id="testing-the-performance-for-the-test-data-set." class="section level2">
+<h2><span class="header-section-number">3.5</span> Testing the performance for the test data set.</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 2: Predict on testData and Compute the confusion matrix</span>
+<span class="co"># Using LDA Model</span>
+predicted &lt;-<span class="st"> </span><span class="kw">predict</span>(model1, testData[,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>])
+<span class="kw">confusionMatrix</span>(<span class="dt">reference =</span> testData<span class="op">$</span>Outcome, <span class="dt">data =</span> predicted, <span class="dt">mode=</span><span class="st">&#39;everything&#39;</span>)</code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction Class0 Class1
+##     Class0     48      5
+##     Class1     52     48
+##                                           
+##                Accuracy : 0.6275          
+##                  95% CI : (0.5457, 0.7042)
+##     No Information Rate : 0.6536          
+##     P-Value [Acc &gt; NIR] : 0.7788          
+##                                           
+##                   Kappa : 0.3192          
+##  Mcnemar&#39;s Test P-Value : 1.109e-09       
+##                                           
+##             Sensitivity : 0.4800          
+##             Specificity : 0.9057          
+##          Pos Pred Value : 0.9057          
+##          Neg Pred Value : 0.4800          
+##               Precision : 0.9057          
+##                  Recall : 0.4800          
+##                      F1 : 0.6275          
+##              Prevalence : 0.6536          
+##          Detection Rate : 0.3137          
+##    Detection Prevalence : 0.3464          
+##       Balanced Accuracy : 0.6928          
+##                                           
+##        &#39;Positive&#39; Class : Class0          
+## </code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-visualization.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
